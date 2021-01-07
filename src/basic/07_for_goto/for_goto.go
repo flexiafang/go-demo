@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Go语言的流程控制
+// Go 语言的流程控制
 func main() {
 
 	/*
@@ -37,7 +37,7 @@ func main() {
 	}
 	fmt.Println()
 
-	// 接for-range语句，range会返回两个数据，索引和数据
+	// 接 for-range 语句，range 会返回两个数据，索引和数据
 	d := [...]string{"hello", "world", "go"}
 
 	for _, item := range d {
@@ -53,8 +53,8 @@ func main() {
 
 	/*
 		4. goto 语句
-		goto后接一个标签，告诉Go程序下一步要执行哪里的代码
-		goto语句与标签之间不能有变量声明，否则编译错误
+		goto 后接一个标签，告诉Go程序下一步要执行哪里的代码
+		goto 语句与标签之间不能有变量声明，否则编译错误
 	*/
 
 	i := 1
