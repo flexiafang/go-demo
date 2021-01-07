@@ -5,7 +5,7 @@ import (
 	"unsafe"
 )
 
-// Go语言中的数据类型
+// Go 语言中的数据类型
 func main() {
 
 	/*
@@ -43,7 +43,7 @@ func main() {
 	fmt.Println(float02+5 == float03)    // false
 
 	/*
-		3. byte与rune
+		3. byte 与 rune
 		- byte: 占用一个字节，与uint8本质上没有区别，表示的是ASCII表中的一个字符
 		- rune:	占用4个字节，共32位，与uint32本质上没有区别，表示的是一个Unicode字符
 	*/
@@ -57,9 +57,9 @@ func main() {
 
 	/*
 		4. 字符串
-		多个字符组成字符串，string本质是一个byte数组
-		Go语言的string使用utf-8进行编码，英文字母占用一个字节，中文字符占用3个字节
-		除了双引号""外，还可以使用反引号``，会忽略转义，所见即所得
+		多个字符组成字符串，string 本质是一个 byte 数组
+		Go 语言的 string 使用 utf-8 进行编码，英文字母占用一个字节，中文字符占用3个字节
+		除了双引号 "" 外，还可以使用反引号 ``，会忽略转义，所见即所得
 	*/
 	var str01 string = "hello"
 	var str02 [5]byte = [5]byte{104, 101, 108, 108, 111}
