@@ -25,10 +25,10 @@ func main() {
 
 	/*
 		5. defer 延迟语句
-		只要在defer后面跟一个函数的调用，就能将这个函数调用延迟到当前函数执行完后再执行
-		defer只是延时函数调用，但是传递给函数的变量值不受后续程序的影响
-		defer是反序调用的
-		defer是在return之后再调用的
+		只要在 defer 后面跟一个函数的调用，就能将这个函数调用延迟到当前函数执行完后再执行
+		defer 只是延时函数调用，但是传递给函数的变量值不受后续程序的影响
+		defer 是反序调用的
+		defer 是在 return 之后再调用的
 	*/
 
 	defer myFunc1()
@@ -76,7 +76,7 @@ func main() {
 	default:
 	}
 
-	// select的超时
+	// select 的超时
 	c3 := make(chan string, 1)
 	c4 := make(chan string, 1)
 	timeout := make(chan bool, 1)
@@ -92,7 +92,7 @@ func main() {
 		fmt.Println("Timeout, exit.")
 	}
 
-	// select用于channel的读取/写入
+	// select 用于 channel 的读取/写入
 	c5 := make(chan int, 2)
 	c5 <- 2
 	select {
