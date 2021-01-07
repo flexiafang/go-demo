@@ -10,7 +10,7 @@ func main() {
 
 	// myFunc1()
 
-	myFunc2(20)
+	myFunc2(10)
 
 	defer fmt.Println("in main")
 	go myFunc3()
@@ -49,7 +49,7 @@ func myFunc2(x int) {
 	arr[x] = 88
 
 	/*
-		runtime error: index out of range [20] with length 10
+		runtime error: index out of range [10] with length 10
 	*/
 }
 
