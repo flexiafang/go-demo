@@ -2,16 +2,16 @@ package main
 
 import "fmt"
 
-// Go语言中的数据类型
+// Go 语言中的数据类型
 func main() {
 
 	/*
-		7. map字典
+		7. map 字典
 		若干个键值对映射组合在一起的数据结构
-		哈希表的一种实现，所以key必须是可哈希的，不能是切片、字典、函数
+		哈希表的一种实现，所以 key 必须是可哈希的，不能是切片、字典、函数
 	*/
 
-	// 声明初始化map
+	// 声明初始化 map
 	var map1 map[string]int = map[string]int{"english": 80, "chinese": 90}
 	map2 := map[string]int{"english": 80, "chinese": 90}
 	map3 := make(map[string]int)
@@ -27,36 +27,36 @@ func main() {
 	delete(map3, "math")
 	fmt.Println(map3) // map[chinese:90 english:80]
 
-	// 访问不存在的key时，返回value类型对应的零值
+	// 访问不存在的 key 时，返回 value 类型对应的零值
 	fmt.Println(map3["physics"]) // 0
 
-	// 判断key是否存在
-	// 下标访问时会返回两个值，第二个返回值表示对应的key是否存在
+	// 判断 key 是否存在
+	// 下标访问时会返回两个值，第二个返回值表示对应的 key 是否存在
 	if math, ok := map3["math"]; ok { // false
 		fmt.Printf("math 的值是 %d\n", math)
 	} else {
 		fmt.Println("math 不存在")
 	}
 
-	// 如何对map进行循环
-	// 获取key和value
+	// 如何对 map 进行循环
+	// 获取 key 和 value
 	for subject, score := range map3 {
 		fmt.Println(subject, score)
 	}
 
-	// 只获取key，不使用占位符
+	// 只获取 key，不使用占位符
 	for subject := range map3 {
 		fmt.Println(subject)
 	}
 
-	// 只获取value，用一个占位符代替
+	// 只获取 value，用一个占位符代替
 	for _, score := range map3 {
 		fmt.Println(score)
 	}
 
 	/*
-		8. bool型
-		Go语言中true和false与1和0并不相等，并且更加严格，不同类型无法进行比较
+		8. bool 型
+		Go 语言中 true 和 false 与 1 和 0 并不相等，并且更加严格，不同类型无法进行比较
 		- 与 &&
 		- 或 ||
 		- 非 ！
