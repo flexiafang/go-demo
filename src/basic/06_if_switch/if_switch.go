@@ -7,8 +7,8 @@ func main() {
 
 	/*
 		1. if-else 条件语句
-		由于Go是强类型，所以要求条件表达式必须严格返回布尔型的数据
-		Go编译器，对于 { 和 } 的位置有严格的要求，必须这样写 } else (if) {
+		由于 Go 是强类型，所以要求条件表达式必须严格返回布尔型的数据
+		Go 编译器，对于 { 和 } 的位置有严格的要求，必须这样写 } else (if) {
 	*/
 
 	var age int
@@ -28,10 +28,10 @@ func main() {
 
 	/*
 		2. switch-case 选择语句
-		只要有一个case满足条件，就会执行对应的代码块，然后直接退出switch-case
+		只要有一个 case 满足条件，就会执行对应的代码块，然后直接退出 switch-case
 	*/
 
-	// 一个case可接多个条件
+	// 一个 case 可接多个条件
 	month := 1
 	var monthStr string
 	switch month {
@@ -48,7 +48,7 @@ func main() {
 	}
 	fmt.Println(monthStr)
 
-	// switch后可接函数
+	// switch 后可接函数
 	chinese := 80
 	english := 50
 	math := 100
@@ -59,7 +59,7 @@ func main() {
 		fmt.Println("有挂科记录")
 	}
 
-	// switch可不接表达式，相当于if-elseif-else
+	// switch 可不接表达式，相当于 if-elseif-else
 	var score int
 	score = 100
 	var scoreRank string
@@ -77,7 +77,7 @@ func main() {
 	}
 	fmt.Println(scoreRank)
 
-	// switch的穿透能力，使用fallthrough穿透一层
+	// switch 的穿透能力，使用 fallthrough 穿透一层
 	var s string
 	s = "hello"
 	switch {
