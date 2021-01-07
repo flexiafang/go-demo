@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Go语言声明变量的5种方式
+// Go 语言声明变量的 5 种方式
 func main() {
 
 	// 1. 一行声明一个变量
@@ -36,7 +36,7 @@ func main() {
 	fmt.Println(school, score)
 	fmt.Println()
 
-	// 5. new函数声明一个指针变量
+	// 5. new 函数声明一个指针变量
 	var num = 1
 	var ptr1 = &num
 	fmt.Println("ptr1 address: ", ptr1)
