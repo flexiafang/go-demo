@@ -49,7 +49,6 @@ func myFunc1() {
 }
 
 func myFunc2() {
-
 	var i interface{} = 10
 
 	t1, ok := i.(int)
