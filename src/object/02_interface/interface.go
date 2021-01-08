@@ -7,7 +7,7 @@ import (
 
 /*
 接口 interface
-接口就是函数签名的集合，当一个类型定义了接口中的所有函数，称它实现了该接口。
+接口就是方法签名的集合，当一个类型定义了接口中的所有方法，称它实现了该接口。
 */
 
 // 定义一个商品 Good 接口
@@ -18,7 +18,7 @@ type Good interface {
 	orderInfo() string
 }
 
-// 定义一个手机 Phone 结构体并实现函数
+// 定义一个手机 Phone 结构体并实现方法
 type Phone struct {
 	name     string
 	quantity int
@@ -34,7 +34,7 @@ func (phone Phone) orderInfo() string {
 		"，计：" + strconv.Itoa(phone.settleAccount()) + "元"
 }
 
-// 定义一个赠品 FreeGift 结构体并实现函数
+// 定义一个赠品 FreeGift 结构体并实现方法
 type FreeGift struct {
 	name     string
 	quantity int
