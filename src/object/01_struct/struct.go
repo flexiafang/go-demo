@@ -14,9 +14,9 @@ type Profile struct {
 }
 
 /*
-无法在结构体内部定义函数，可以使用组合函数的方式来定义结构体函数。
-  - FmtProfile: 函数名。
-  - (person Profile): 表示将 FmtProfile 函数与 Profile 的实例 person 绑定。
+无法在结构体内部定义方法，可以使用组合方法的方式来定义结构体方法。
+  - FmtProfile: 方法名。
+  - (person Profile): 表示将 FmtProfile 方法与 Profile 的实例 person 绑定。
 */
 func (person Profile) FmtProfile() {
 	fmt.Printf("姓名：%s\n", person.name)
@@ -25,13 +25,13 @@ func (person Profile) FmtProfile() {
 }
 
 /*
-两种定义函数的方式：
-  1. 以值作为函数接收者。
-  2. 以指针作为函数接收者。
-     (1) 需要在函数内部改变结构体内容。
+两种定义方法的方式：
+  1. 以值作为方法接收者。
+  2. 以指针作为方法接收者。
+     (1) 需要在方法内部改变结构体内容。
      (2) 结构体过大。
 
-在 Go 语言中，函数名的首字母大小写非常重要，它被来实现控制对方法的访问权限。
+在 Go 语言中，方法名的首字母大小写非常重要，它被来实现控制对方法的访问权限。
   - 当方法的首字母为大写时，这个方法对于所有包都是Public，其他包可以随意调用。
   - 当方法的首字母为小写时，这个方法是Private，其他包是无法访问的。
 */
@@ -66,7 +66,7 @@ func (staffInfo *staff) fmtCompanyName() {
 func main() {
 	// 实例化
 	myself := Profile{name: "flexia", age: 22, gender: "male"}
-	// 调用函数
+	// 调用方法
 	myself.FmtProfile()
 
 	myself.increaseAge()
