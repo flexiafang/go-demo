@@ -42,9 +42,9 @@ func myFunc1() {
 
 		goroutine 1 [running]:
 		main.myFunc1()
-			go-demo/src/object/04_type_assertion/type_assertion.go:33 +0xb3
+			go-demo/src/object_oriented/04_type_assertion/type_assertion.go:33 +0xb3
 		main.main()
-			go-demo/src/object/04_type_assertion/type_assertion.go:24 +0x27
+			go-demo/src/object_oriented/04_type_assertion/type_assertion.go:24 +0x27
 	*/
 }
 
