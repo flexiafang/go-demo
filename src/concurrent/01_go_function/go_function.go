@@ -61,11 +61,9 @@ func visit(list []int, f func(int)) {
 }
 
 func main() {
-	fmt.Println(Sum(1, 2, 3))
+	fmt.Println(Sum(1, 2, 3)) // 6
 
-	fmt.Println(double(2))
+	fmt.Println(double(2)) // 4
 
-	visit([]int{1, 2, 3, 4}, func(v int) {
-		fmt.Println(v)
-	})
+	visit([]int{1, 2, 3, 4}, func(v int) { fmt.Println(v) }) // 1 2 3 4
 }
