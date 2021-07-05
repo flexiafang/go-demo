@@ -20,7 +20,8 @@ channel，是一个可以让一个 goroutine 与另一个 goroutine 传输信息
 */
 func myFunc1() {
 	// 声明并初始化信道
-	pipeline := make(chan int, 1)
+	var pipeline chan int
+	pipeline = make(chan int, 1)
 	// 往信道中发送数据
 	pipeline <- 1
 	// 从信道中取出数据
@@ -32,6 +33,7 @@ func myFunc1() {
 	if _, ok := <-pipeline; !ok {
 		fmt.Println("信道被关闭")
 	}
+	fmt.Println()
 }
 
 /*
@@ -50,6 +52,7 @@ func myFunc2() {
 	fmt.Printf("信道可缓冲 %d 个数据\n", cap(pipeline)) // 10
 	pipeline <- 1
 	fmt.Printf("信道中当前有 %d 个数据\n", len(pipeline)) // 1
+	fmt.Println()
 }
 
 /*
@@ -73,6 +76,7 @@ func myFunc3() {
 
 	// 函数sleep，使得上面两个goroutine有机会执行
 	time.Sleep(1)
+	fmt.Println()
 }
 
 /*
@@ -107,6 +111,7 @@ func myFunc4() {
 	}()
 
 	time.Sleep(1)
+	fmt.Println()
 }
 
 /*
@@ -114,8 +119,64 @@ func myFunc4() {
 遍历信道，可以使用 for 搭配 range 关键字，在 range 时，要确保信道是处于关闭状态，否则循环会阻塞。
 */
 func myFunc5() {
-
+	pipeline := make(chan int, 10)
+	go fibonacci(pipeline)
+	for k := range pipeline {
+		fmt.Printf("%d ", k)
+	}
+	fmt.Print("\n\n")
 }
+
+func fibonacci(c chan int) {
+	n := cap(c)
+	x, y := 1, 1
+	for i := 0; i < n; i++ {
+		c <- x
+		x, y = y, x+y
+	}
+	// 记得 close 信道
+	// 不然主函数中遍历完并不会结束，而是会阻塞。
+	close(c)
+}
+
+/*
+7. 用信道做锁
+当信道里的数据量已经达到设定的容量时，此时再往里发送数据会阻塞整个程序。
+利用这个特性，可以用来当程序的锁。
+*/
+func myFunc7() {
+	// 设置容量为 1 的缓冲信道
+	pipeline := make(chan bool, 1)
+
+	var x int
+	for i := 0; i < 1000; i++ {
+		go increment(pipeline, &x)
+	}
+
+	time.Sleep(time.Second)
+	// 如果不加锁，结果可能小于1000
+	fmt.Println("x 的值为", x)
+}
+
+func increment(ch chan bool, x *int) {
+	ch <- true
+	// 由于 x=x+1 不是原子操作
+	// 所以应避免多个协程对x进行操作
+	// 使用容量为1的信道可以达到锁的效果
+	*x = *x + 1
+	<-ch
+}
+
+/*
+8. 几个注意事项
+关闭一个未初始化的 channel 会产生 panic
+重复关闭同一个 channel 会产生 panic
+向一个已关闭的 channel 发送消息会产生 panic
+从已关闭的 channel 读取消息不会产生 panic，且能读出 channel 中还未被读取的消息，若消息均已被读取，则会读取到该类型的零值。
+从已关闭的 channel 读取消息永远不会阻塞，并且会返回一个为 false 的值，用以判断该 channel 是否已关闭（x,ok := <-ch）
+关闭 channel 会产生一个广播机制，所有向 channel 读取消息的 goroutine 都会收到消息
+channel 在 Golang 中是一等公民，它是线程安全的，面对并发问题，应首先想到 channel。
+*/
 
 func main() {
 	myFunc1()
@@ -123,4 +184,23 @@ func main() {
 	myFunc3()
 	myFunc4()
 	myFunc5()
+	myFunc7()
 }
+
+/*
+1
+信道被关闭
+
+信道可缓冲 10 个数据
+信道中当前有 1 个数据
+
+准备发送数据: 100
+接收到的数据是: 100
+
+准备发送数据：1
+接收到的数据是：1
+
+1 1 2 3 5 8 13 21 34 55
+
+x 的值为 1000
+*/
