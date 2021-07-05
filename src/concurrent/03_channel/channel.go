@@ -88,10 +88,10 @@ func myFunc3() {
 chan<- 表示这个信道，只能从外面接收数据，对于程序来说就是只写。
 */
 
-//定义只写信道类型
+// Sender 定义只写信道类型
 type Sender chan<- int
 
-//定义只读信道类型
+// Receiver 定义只读信道类型
 type Receiver <-chan int
 
 func myFunc4() {
